@@ -1,22 +1,26 @@
 import { createStore } from "redux";
 
 const INITIAL_STORE = {
-    counter: 0
+    counter: 0,
+    privacy: false
 }
 
 const reducer = (store = INITIAL_STORE, action) => {
     let newStore = store;
     if (action.type === "INCREMENT") {
-        newStore = { counter: store.counter + 1 };
+        newStore = { ...store, counter: store.counter + 1 };
     }
     else if (action.type === "DECREMENT") {
-        newStore = { counter: store.counter - 1 };
+        newStore = { ...store, counter: store.counter - 1 };
     }
     else if (action.type === "INCREMENT_BY_X") {
-        newStore = { counter: store.counter + Number(action.payload) };
+        newStore = { ...store, counter: store.counter + Number(action.payload) };
     }
     else if (action.type === "DECREMENT_BY_X") {
-        newStore = { counter: store.counter - Number(action.payload) };
+        newStore = { ...store, counter: store.counter - Number(action.payload) };
+    }
+    else if (action.type === "TOGGLE_PRIVACY") {
+        newStore = { ...store, privacy: !store.privacy }
     }
     return newStore;
 }
