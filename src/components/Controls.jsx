@@ -19,6 +19,13 @@ const Controls = () => {
     dispatch(action);
   };
 
+  const handlePrivacyToggle = () => {
+    const action = {
+      type: "TOGGLE_PRIVACY",
+    };
+    dispatch(action);
+  };
+
   const handleAddByX = () => {
     const action = {
       type: "INCREMENT_BY_X",
@@ -53,6 +60,13 @@ const Controls = () => {
           onClick={handleSub}
         >
           -
+        </button>
+        <button
+          type="button"
+          className="btn btn-warning btn-lg px-4 gap-3"
+          onClick={handlePrivacyToggle}
+        >
+          Privacy Toggler
         </button>
       </div>
       <div className="d-grid gap-2 d-sm-flex justify-content-sm-center controls-row">
